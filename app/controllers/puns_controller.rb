@@ -1,0 +1,2 @@
+class PunsController < ApplicationController
+end
