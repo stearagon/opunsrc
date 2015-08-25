@@ -6,5 +6,8 @@ class CreateTopicPun < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_index :topic_puns, :topic_id, unique: true
+    add_index :topic_puns, :pun_id, unique: true
   end
 end

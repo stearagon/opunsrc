@@ -30,6 +30,9 @@ ActiveRecord::Schema.define(version: 20150825204808) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "topic_puns", ["pun_id"], name: "index_topic_puns_on_pun_id", unique: true
+  add_index "topic_puns", ["topic_id"], name: "index_topic_puns_on_topic_id", unique: true
+
   create_table "topics", force: :cascade do |t|
     t.string   "title",      null: false
     t.datetime "created_at", null: false
