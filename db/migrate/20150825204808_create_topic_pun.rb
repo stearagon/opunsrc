@@ -1,6 +1,6 @@
 class CreateTopicPun < ActiveRecord::Migration
   def change
-    create_table :topic_puns, id: false do |t|
+    create_table :topics_puns, id: false do |t|
       t.belongs_to :topic, null: false, index: true
       t.belongs_to :pun, null: false, index: true
 
