@@ -1,2 +1,0 @@
-class PunsController < ApplicationController
-end
