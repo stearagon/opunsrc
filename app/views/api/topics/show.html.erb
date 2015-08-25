@@ -1,0 +1,9 @@
+<h1><%= @topic.title %></h1>
+
+<form class="delete-topic" action="<%= api_topic_url %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <%= form_auth %>
+  <button>Delete Topic</button>
+</form>
+
+<%= link_to "Topics Index", api_topics_url %>

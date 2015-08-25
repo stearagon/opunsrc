@@ -1,0 +1,6 @@
+<h1>Topics</h1>
+<ul>
+<% @topics.each do |topic|  %>
+  <li><a href="<%=api_topic_url(topic.id)%>"><%= topic.title  %></a></li>
+<% end %>
+</ul>

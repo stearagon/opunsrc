@@ -1,3 +1,3 @@
 class Topic < ActiveRecord::Base
-  has_many :puns, inverse_of: :topic
+  validates :title, presence: true, uniqueness: true
 end

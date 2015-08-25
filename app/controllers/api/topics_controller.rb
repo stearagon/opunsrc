@@ -1,17 +1,33 @@
 class Api::TopicsController < ApplicationController
   def new
     @topic = Topic.new
-    render :new
   end
 
   def create
     @topic = Topic.new(topic_params)
 
-    if @topic
-      render json: @topic
+    if @topic.save
+      redirect_to api_topic_url(@topic.id)
     else
+      flash.now[:errors] = @topic.errors.full_messages
       render :new
     end
+  end
+
+  def show
+    @topic = Topic.find(params[:id])
+  end
+
+  def destroy
+    @topic = Topic.find(params[:id])
+
+    @topic.destroy
+
+    redirect_to api_topics_url
+  end
+
+  def index
+    @topics = Topic.all
   end
 
   private
