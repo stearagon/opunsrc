@@ -23,15 +23,15 @@ ActiveRecord::Schema.define(version: 20150825204808) do
 
   add_index "puns", ["term"], name: "index_puns_on_term", unique: true
 
-  create_table "topic_puns", force: :cascade do |t|
+  create_table "topic_puns", id: false, force: :cascade do |t|
     t.integer  "topic_id",   null: false
     t.integer  "pun_id",     null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "topic_puns", ["pun_id"], name: "index_topic_puns_on_pun_id", unique: true
-  add_index "topic_puns", ["topic_id"], name: "index_topic_puns_on_topic_id", unique: true
+  add_index "topic_puns", ["pun_id"], name: "index_topic_puns_on_pun_id"
+  add_index "topic_puns", ["topic_id"], name: "index_topic_puns_on_topic_id"
 
   create_table "topics", force: :cascade do |t|
     t.string   "title",      null: false
