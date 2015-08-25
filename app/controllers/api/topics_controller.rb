@@ -14,6 +14,17 @@ class Api::TopicsController < ApplicationController
     end
   end
 
+  def update
+    @topic = Topic.find(params[:id])
+
+    if @topic.update(topic_params)
+      redirect_to api_topic_url(@topic.id)
+    else
+      flash.now[:errors] = @topic.errors.full_messages
+      render :edit
+    end
+  end
+
   def show
     @topic = Topic.find(params[:id])
   end
@@ -28,6 +39,11 @@ class Api::TopicsController < ApplicationController
 
   def index
     @topics = Topic.all
+  end
+
+  def edit
+    @topic = Topic.find(params[:id])
+
   end
 
   private

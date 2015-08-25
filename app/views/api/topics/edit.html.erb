@@ -1,0 +1,9 @@
+<h1>Edit Topic</h1>
+
+<form class="topic-form" action="<%= api_topic_url %>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <%= form_auth %>
+  <label for="topic-title">Topic</label>
+  <input type="text" id="topic-title" name="topic[title]" value="<%= @topic.title %>">
+  <button>Finish Edit</button>
+</form>
