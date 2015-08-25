@@ -1,6 +1,7 @@
 class Api::TopicsController < ApplicationController
   def new
     @topic = Topic.new
+    render :new
   end
 
   def create

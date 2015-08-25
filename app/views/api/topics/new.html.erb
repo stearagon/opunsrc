@@ -1,0 +1,7 @@
+<h1>Create Topic</h1>
+
+<form class="topic-form" action="topics_url" method="post">
+  <%= form_auth %>
+  <input type="text" name="name" value="<%= @topic.title %>">
+  <button>Create Topic</button>
+</form>
