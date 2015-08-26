@@ -12,5 +12,13 @@
   <label for="pun-example">Term</label>
   <input type="text" id="pun-example" name="pun[example]" value="<%= @pun.example %>">
 
+  <label for="pun-tags">Tags</label>
+  <textarea id="pun-tags" name="pun[tags]" rows="8" cols="40">
+    <% @pun.topics.each do |topic| %>
+      <%= "#" + topic.title %>
+    <% end %>
+
+  </textarea>
+
   <button>Finish Edit</button>
 </form>

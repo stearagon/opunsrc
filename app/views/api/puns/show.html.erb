@@ -1,4 +1,12 @@
 <h1><%= @pun.term %></h1>
+<h1><%= @pun.pun %></h1>
+<h1><%= @pun.example %></h1>
+<h1>Tags</h1>
+<ul>
+  <% @pun.topics.each do |topic| %>
+    <li><%= topic.title %></li>
+  <% end %>
+</ul>
 
 <form class="delete-pun" action="<%= api_pun_url %>" method="post">
   <input type="hidden" name="_method" value="delete">

@@ -16,6 +16,8 @@ class Api::PunsController < ApplicationController
 
   def update
     @pun = Pun.find(params[:id])
+    
+    @pun.update_tags(params[:pun][:tags])
 
     if @pun.update(pun_params)
       redirect_to api_pun_url(@pun.id)
