@@ -6,4 +6,5 @@
   <label for="topic-title">Topic</label>
   <input type="text" id="topic-title" name="topic[title]" value="<%= @topic.title %>">
   <button>Finish Edit</button>
+  <%= link_to "Return to Index", api_topics_url %>
 </form>

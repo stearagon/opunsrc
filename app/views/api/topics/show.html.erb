@@ -1,5 +1,11 @@
 <h1><%= @topic.title %></h1>
 
+<ul>
+  <% @topic.puns.each do |pun| %>
+    <li><%= link_to pun.term, api_pun_url(pun)  %></li>
+  <% end %>
+</ul>
+
 <form class="delete-topic" action="<%= api_topic_url %>" method="post">
   <input type="hidden" name="_method" value="delete">
   <%= form_auth %>
