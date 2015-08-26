@@ -8,6 +8,5 @@ class CreatePuns < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    add_index :puns, :term, unique: true
   end
 end

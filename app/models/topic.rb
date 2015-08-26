@@ -1,5 +1,7 @@
 class Topic < ActiveRecord::Base
   validates :title, presence: true, uniqueness: true
 
-  has_and_belongs_to_many :puns
+  has_many :topics_puns
+  has_many :puns, through: :topics_puns, source: :pun
+
 end
