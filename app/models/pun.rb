@@ -8,7 +8,7 @@ class Pun < ActiveRecord::Base
     tags = tags.split
     self.topics.each_with_index do |topic, idx|
       if !tags.include?("#" + topic.title)
-        self.topics[idx].destroy
+        self.topics.delete(topic)
       else
         tags.delete("#" + topic.title)
       end

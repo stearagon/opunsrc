@@ -6,6 +6,8 @@ class Api::PunsController < ApplicationController
   def create
     @pun = Pun.new(pun_params)
 
+    @pun.update_tags(params[:pun][:tags])
+
     if @pun.save
       redirect_to api_pun_url(@pun.id)
     else
@@ -16,7 +18,7 @@ class Api::PunsController < ApplicationController
 
   def update
     @pun = Pun.find(params[:id])
-    
+
     @pun.update_tags(params[:pun][:tags])
 
     if @pun.update(pun_params)
