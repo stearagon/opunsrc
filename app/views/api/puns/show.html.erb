@@ -1,0 +1,10 @@
+<h1><%= @pun.term %></h1>
+
+<form class="delete-pun" action="<%= api_pun_url %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <%= form_auth %>
+  <button>Delete Pun</button>
+</form>
+
+<%= link_to "Edit Pun", edit_api_pun_url %>
+<%= link_to "Puns Index", api_puns_url %>

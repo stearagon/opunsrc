@@ -1,0 +1,6 @@
+<h1>Puns</h1>
+<ul>
+<% @puns.each do |pun|  %>
+  <li><a href="<%=api_pun_url(pun.id)%>"><%= pun.term %></a></li>
+<% end %>
+</ul>

@@ -1,0 +1,15 @@
+<h1>Create Pun</h1>
+
+<form class="pun-form" action="<%= api_puns_url %>" method="post">
+  <%= form_auth %>
+  <label for="pun-term">Term</label>
+  <input type="text" id="pun-term" name="pun[term]" value="<%= @pun.term %>">
+
+  <label for="pun-pun">Pun</label>
+  <input type="text" id="pun-pun" name="pun[pun]" value="<%= @pun.pun %>">
+
+  <label for="pun-example">Term</label>
+  <input type="text" id="pun-example" name="pun[example]" value="<%= @pun.example %>">
+
+  <button>Create Pun</button>
+</form>
