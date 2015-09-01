@@ -1,12 +1,14 @@
 class SessionsController < ApplicationController
-
+  skip_before_action :require_signed_in, only: [:new, :create]
   def new
+    @user = User.new
   end
 
   def create
-    user.find_by_credentials(
-      params[:user][:handle],
-      params[:user][:password]
+    @user = User.new(params[:user])
+    user = User.find_by_credentials(
+      params[:session][:handle],
+      params[:session][:password]
       )
 
     if user
@@ -20,7 +22,7 @@ class SessionsController < ApplicationController
 
   def destroy
     sign_out
-    rediect_to new_session_url
+    redirect_to new_session_url
   end
 
 end

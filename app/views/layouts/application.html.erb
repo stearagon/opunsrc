@@ -8,6 +8,12 @@
 </head>
 <body>
   <%= link_to "Opunsrc", root_url %>
+  <% if signed_in? %>
+    <%= link_to "Sign Out", session_url, method: :delete %>
+  <% else %>
+    <%= link_to "Create New User", new_user_url %>
+  <% end %>
+
   <% if !flash[:errors].nil? %>
     <% flash[:errors].each do |error| %>
       <%= error %>

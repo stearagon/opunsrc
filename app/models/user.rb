@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 
   def self.find_by_credentials(handle, password)
-    @user = User.find_by(handle: handle)
+    user = User.find_by(handle: handle)
     return nil unless user && user.is_password?(password)
     user
   end

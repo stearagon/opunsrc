@@ -1,0 +1,12 @@
+<form action="<%= session_url %>" method="post">
+  <%= form_auth %>
+  
+  <label for="username">Username</label>
+  <input type="text" name="session[handle]" id="username" value="<%= @user.handle %>">
+
+  <label for="password">Password</label>
+  <input type="password" name="session[password]" id="password" value="">
+
+  <button>Sign In</button>
+
+</form>
