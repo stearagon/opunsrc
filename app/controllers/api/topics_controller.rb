@@ -38,7 +38,7 @@ class Api::TopicsController < ApplicationController
   end
 
   def index
-    @topics = Topic.all
+    @topics = Topic.all.includes(:puns)
   end
 
   def edit
