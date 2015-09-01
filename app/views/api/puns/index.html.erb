@@ -3,6 +3,6 @@
 <%= link_to "Topics Index", api_topics_url %>
 <ul>
 <% @puns.each do |pun|  %>
-  <li><a href="<%=api_pun_url(pun.id)%>"><%= pun.term %></a> <%= link_to "Delete Pun", api_pun_url(pun), method: :delete %></li>
+  <li><a href="<%=api_pun_url(pun.id)%>"><%= pun.term %></a> <%= button_to "Delete Pun", api_pun_url(pun), method: :delete %></li>
 <% end %>
 </ul>

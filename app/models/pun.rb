@@ -12,7 +12,7 @@
 
 class Pun < ActiveRecord::Base
   include PgSearch
-  multisearchable :against => [:term, :pun]
+  multisearchable :against => [:term, :pun, :topics_titles]
   validates :term, :pun, :example, presence: true
 
   has_many :topics_puns
@@ -40,6 +40,14 @@ class Pun < ActiveRecord::Base
 
     end
 
+  end
+
+  def topics_titles
+    result = []
+    topics.each do |topic|
+      result << topic.title
+    end
+    return result
   end
 
 end

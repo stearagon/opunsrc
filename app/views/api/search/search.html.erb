@@ -1,3 +1,4 @@
+<% @search_results = @search_results.sort { |x,y| y.searchable_type<=>x.searchable_type }%> <!--better way to sort searchable?-->
 <h1>Search Results</h1>
 <ul>
   <% @search_results.each do |result| %>

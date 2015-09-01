@@ -47,7 +47,7 @@ class Api::PunsController < ApplicationController
   end
 
   def index
-    @puns = Pun.all
+    @puns = Pun.all.order(term: :asc)
   end
 
   def edit
