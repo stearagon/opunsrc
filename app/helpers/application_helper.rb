@@ -24,17 +24,12 @@ module ApplicationHelper
     .html_safe
   end
 
-  def like_delete(likeable_id, likeable_type)
+  def like_delete(like)
     <<-HTML
-      <form class="like-form" action="#{api_likes_url}" method="post">
+      <form class="like-form" action="#{api_like_url(like)}" method="post">
         #{form_auth}
         <input type="hidden" name="_method" value="delete">
-
-        <input type="hidden" name="like[likeable_id]" value="#{likeable_id}">
-
-        <input type="hidden" name="like[likeable_type]" value="#{likeable_type}">
-
-        <button>Delete!</button>
+        <button>Unlike!</button>
       </form>
     HTML
     .html_safe
