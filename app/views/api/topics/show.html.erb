@@ -1,10 +1,16 @@
 <h1><%= @topic.title %></h1>
+<% @like = current_user.likes.find_by( likeable_id: @topic.id, likeable_type: "Topic") %>
+<%= @like ? like_delete(@like) : like_create(@topic.id, "Topic")  %>
 
 <%= link_to "Add Pun", new_api_pun_url(params: { tags: @topic }) %>
 
 <ul>
   <% @topic.puns.each do |pun| %>
-    <li><%= link_to pun.term, api_pun_url(pun)  %></li>
+    <li>
+      <%= link_to pun.term, api_pun_url(pun)  %>
+      <% @like = current_user.likes.find_by( likeable_id: pun.id, likeable_type: "Pun") %>
+      <%= @like ? like_delete(@like) : like_create(pun.id, "Pun")  %>
+    </li>
   <% end %>
 </ul>
 
