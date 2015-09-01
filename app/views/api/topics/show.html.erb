@@ -1,6 +1,6 @@
 <h1><%= @topic.title %></h1>
 
-<%= link_to "Add Pun", new_api_pun_url %>
+<%= link_to "Add Pun", new_api_pun_url(params: { tags: @topic }) %>
 
 <ul>
   <% @topic.puns.each do |pun| %>

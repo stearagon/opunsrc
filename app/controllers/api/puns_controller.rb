@@ -1,6 +1,11 @@
 class Api::PunsController < ApplicationController
   def new
-    @pun = Pun.new
+    if params[:tags].nil?
+      @pun = Pun.new
+    else
+      @pun = Pun.new;
+      @pun.topics << Topic.find(params[:tags]);
+    end
   end
 
   def create
