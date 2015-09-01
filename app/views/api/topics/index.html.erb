@@ -5,6 +5,6 @@
 
 <ul>
 <% @topics.each do |topic|  %>
-  <li><a href="<%=api_topic_url(topic.id)%>"><%= topic.title  %></a></li>
+  <li><a href="<%=api_topic_url(topic.id)%>"><%= topic.title  %></a> <%= link_to "Delete Topic", api_topic_url(topic), method: :delete %></li>
 <% end %>
 </ul>

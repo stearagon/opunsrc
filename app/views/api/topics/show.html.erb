@@ -1,5 +1,7 @@
 <h1><%= @topic.title %></h1>
 
+<%= link_to "Add Pun", new_api_pun_url %>
+
 <ul>
   <% @topic.puns.each do |pun| %>
     <li><%= link_to pun.term, api_pun_url(pun)  %></li>
@@ -14,3 +16,4 @@
 
 <%= link_to "Edit Topic", edit_api_topic_url %>
 <%= link_to "Topics Index", api_topics_url %>
+<%= link_to "Puns Index", api_puns_url %>
