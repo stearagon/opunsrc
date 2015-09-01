@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150825204808) do
+ActiveRecord::Schema.define(version: 20150901044837) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "pg_search_documents", ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
 
   create_table "puns", force: :cascade do |t|
     t.string   "term",       null: false
@@ -21,7 +34,7 @@ ActiveRecord::Schema.define(version: 20150825204808) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "puns", ["term"], name: "index_puns_on_term", unique: true
+  add_index "puns", ["term"], name: "index_puns_on_term", unique: true, using: :btree
 
   create_table "topics", force: :cascade do |t|
     t.string   "title",      null: false
@@ -36,7 +49,7 @@ ActiveRecord::Schema.define(version: 20150825204808) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "topics_puns", ["pun_id"], name: "index_topics_puns_on_pun_id"
-  add_index "topics_puns", ["topic_id"], name: "index_topics_puns_on_topic_id"
+  add_index "topics_puns", ["pun_id"], name: "index_topics_puns_on_pun_id", using: :btree
+  add_index "topics_puns", ["topic_id"], name: "index_topics_puns_on_topic_id", using: :btree
 
 end

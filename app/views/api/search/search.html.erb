@@ -1,0 +1,15 @@
+<h1>Search Results</h1>
+<ul>
+  <% @search_results.each do |result| %>
+    <li>
+      <% if result.searchable_type == "Topic" %>
+        <% @topic = Topic.find_by_id(result.searchable_id) %>
+        <%= link_to "Topic: #{@topic.title}", api_topic_url(@topic) %>
+      <% elsif result.searchable_type == "Pun" %>
+        <% @pun = Pun.find_by_id(result.searchable_id) %>
+        <%= link_to "Pun: #{@pun.term}", api_pun_url(@pun) %>
+      <% end %>
+    </li>
+  <% end %>
+
+</ul>
