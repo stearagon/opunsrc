@@ -15,5 +15,6 @@ class Topic < ActiveRecord::Base
 
   has_many :topics_puns
   has_many :puns, through: :topics_puns, source: :pun
+  has_many :likes, as: :likeable
 
 end

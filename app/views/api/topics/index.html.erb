@@ -5,6 +5,12 @@
 
 <ul>
 <% @topics.each do |topic|  %>
-  <li><a href="<%=api_topic_url(topic.id)%>"><%= topic.title  %><%= " (#{topic.puns.count})"%></a> <%= button_to "Delete Topic", api_topic_url(topic), method: :delete %></li>
+  <li>
+    <a href="<%=api_topic_url(topic.id)%>">
+      <%= topic.title  %><%= " (#{topic.puns.count})"%>
+    </a>
+    <%= current_user.likes.include?(topic) ? like_create(topic.id, "Topic") : like_create(topic.id, "Topic")  %>
+    <%= button_to "Delete Topic", api_topic_url(topic), method: :delete %>
+  </li>
 <% end %>
 </ul>

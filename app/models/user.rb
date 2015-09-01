@@ -20,6 +20,9 @@ class User < ActiveRecord::Base
 
   after_initialize :ensure_session_token
 
+  has_many :likes
+  has_many :topics, through: :likes, source: :likeable, source_type: "Topic"
+
   def self.find_by_credentials(handle, password)
     user = User.find_by(handle: handle)
     return nil unless user && user.is_password?(password)
