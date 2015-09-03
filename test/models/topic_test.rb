@@ -11,7 +11,11 @@
 require 'test_helper'
 
 class TopicTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  describe Topic do
+    let(:topic) { Topic.new(title: "New Topic")}
+
+    it "has a title attribute" do
+      expect(topic.titile).to eq("New Topic")
+    end
+  end
 end

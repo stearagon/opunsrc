@@ -21,3 +21,15 @@
 
 en:
   hello: "Hello world"
+
+  en:
+  activerecord:
+    attributes:
+      pun:
+        topics: "Tag(s)"
+    errors:
+      models:
+        pun:
+          attributes:
+            topics:
+              blank: "required"

@@ -14,6 +14,7 @@ class Pun < ActiveRecord::Base
   include PgSearch
   multisearchable :against => [:term, :pun, :topics_titles]
   validates :term, :pun, :example, presence: true
+  validates :topics, presence: true
 
   has_many :topics_puns
   has_many :topics, through: :topics_puns, source: :topic

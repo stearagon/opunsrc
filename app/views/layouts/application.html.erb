@@ -9,6 +9,8 @@
 <body>
   <%= link_to "Opunsrc", root_url %>
   <% if signed_in? %>
+    <%= link_to "Topics Index", api_topics_url %>
+    <%= link_to "Puns Index", api_puns_url %>
     <%= link_to "Sign Out", session_url, method: :delete %>
   <% else %>
     <%= link_to "Create New User", new_user_url %>

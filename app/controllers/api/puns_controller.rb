@@ -9,7 +9,6 @@ class Api::PunsController < ApplicationController
   end
 
   def create
-
     @pun = Pun.new(pun_params)
 
     @pun.update_tags(params[:pun][:tags])
