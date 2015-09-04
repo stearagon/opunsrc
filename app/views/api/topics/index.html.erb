@@ -7,7 +7,7 @@
 <% @topics.each do |topic|  %>
   <li>
     <a href="<%=api_topic_url(topic.id)%>">
-      <%= topic.title  %><%= " (#{topic.puns.count})"%>
+      <%= topic.title  %><%= " (#{topic.puns.count})"%> <%= "Likes: #{topic.likes.count}"%>
     </a>
     <% @like = current_user.likes.find_by( likeable_id: topic.id, likeable_type: "Topic") %>
     <%= @like ? like_delete(@like) : like_create(topic.id, "Topic")  %>

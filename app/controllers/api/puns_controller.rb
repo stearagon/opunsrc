@@ -12,7 +12,6 @@ class Api::PunsController < ApplicationController
     @pun = Pun.new(pun_params)
 
     @pun.update_tags(params[:pun][:tags])
-
     if @pun.save
       redirect_to api_pun_url(@pun.id)
     else
@@ -35,7 +34,7 @@ class Api::PunsController < ApplicationController
   end
 
   def show
-    @pun = Pun.find(params[:id])
+    @pun = Pun.find(params[:id]).includes(:likes)
   end
 
   def destroy
@@ -47,7 +46,7 @@ class Api::PunsController < ApplicationController
   end
 
   def index
-    @puns = Pun.all.order(term: :asc)
+    @puns = Pun.all.order(term: :asc).includes(:likes)
   end
 
   def edit

@@ -26,7 +26,7 @@ class Api::TopicsController < ApplicationController
   end
 
   def show
-    @topic = Topic.find(params[:id])
+    @topic = Topic.includes(:likes).find(params[:id])
   end
 
   def destroy
@@ -38,7 +38,7 @@ class Api::TopicsController < ApplicationController
   end
 
   def index
-    @topics = Topic.all.includes(:puns).order(title: :asc)
+    @topics = Topic.all.includes(:puns).order(title: :asc).includes(:likes)
   end
 
   def edit

@@ -22,14 +22,14 @@
 en:
   hello: "Hello world"
 
-  en:
-  activerecord:
-    attributes:
+en:
+activerecord:
+  attributes:
+    pun:
+      topics: "Tag(s)"
+  errors:
+    models:
       pun:
-        topics: "Tag(s)"
-    errors:
-      models:
-        pun:
-          attributes:
-            topics:
-              blank: "required"
+        attributes:
+          topics:
+            blank: "required"
