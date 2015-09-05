@@ -34,7 +34,7 @@ class Api::PunsController < ApplicationController
   end
 
   def show
-    @pun = Pun.find(params[:id]).includes(:likes)
+    @pun = Pun.includes(:likes).find(params[:id])
   end
 
   def destroy

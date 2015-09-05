@@ -38,7 +38,7 @@ class Api::TopicsController < ApplicationController
   end
 
   def index
-    @topics = Topic.all.includes(:puns).order(title: :asc).includes(:likes)
+    @topics = Topic.all.includes(:puns, :likes).order(title: :asc)
   end
 
   def edit
