@@ -33,6 +33,7 @@ gem 'bcrypt', '~> 3.1.7'
 
  gem 'newrelic_rpm'
  gem 'rails_12factor'
+ gem 'angularjs-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

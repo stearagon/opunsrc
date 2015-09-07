@@ -13,12 +13,7 @@
   </textarea>
 
   <label for="pun-tags">Tags</label>
-  <textarea id="pun-tags" name="pun[tags]" rows="8" cols="40">
-    <% @pun.topics.each do |topic| %>
-      <%= "#" + topic.title %>
-    <% end %>
-
-  </textarea>
+  <textarea id="pun-tags" name="pun[tags]" rows="8" cols="40"><% @pun.topics.each do |topic| %><%= "#" + topic.title %><% end %></textarea>
 
   <button>Create Pun</button>
   <%= link_to "Return to Index", api_puns_url %>
