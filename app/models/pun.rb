@@ -19,6 +19,8 @@ class Pun < ActiveRecord::Base
   has_many :topics_puns
   has_many :topics, through: :topics_puns, source: :topic
   has_many :likes, as: :likeable
+  has_many :requests_puns
+  has_many :requests, through: :requests_puns, source: :requests
 
   def update_tags(tags)
     tags = tags.split
