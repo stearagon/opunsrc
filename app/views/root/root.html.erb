@@ -19,3 +19,10 @@
     <li><%= link_to pun.term, api_pun_url(pun) %></li>
   <% end %>
 </ul>
+
+<label for="top-users">Top Puns</label>
+<ul id="top-users">
+  <% @top_users.each do |user| %>
+    <li><%= link_to user.handle, user_url(user) %></li>
+  <% end %>
+</ul>
