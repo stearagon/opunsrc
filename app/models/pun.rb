@@ -54,4 +54,8 @@ class Pun < ActiveRecord::Base
     return result
   end
 
+  def self.top_20
+    Pun.all
+  end
+
 end

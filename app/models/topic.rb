@@ -17,4 +17,12 @@ class Topic < ActiveRecord::Base
   has_many :puns, through: :topics_puns, source: :pun
   has_many :likes, as: :likeable
 
+  def self.top_20
+    Topic
+      .joins(:topics_puns, :puns)
+      .group("topics.id")
+      .order("COUNT(puns.id) DESC")
+      .limit(20)
+  end
+
 end
