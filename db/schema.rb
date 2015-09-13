@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150912155941) do
+ActiveRecord::Schema.define(version: 20150913145309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,26 +37,29 @@ ActiveRecord::Schema.define(version: 20150912155941) do
   add_index "pg_search_documents", ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id", using: :btree
 
   create_table "puns", force: :cascade do |t|
-    t.string   "term",       null: false
-    t.string   "pun",        null: false
-    t.string   "example",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "term",                   null: false
+    t.string   "pun",                    null: false
+    t.string   "example",                null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "user_id",    default: 1, null: false
   end
 
   add_index "puns", ["term"], name: "index_puns_on_term", unique: true, using: :btree
 
   create_table "ratings", force: :cascade do |t|
-    t.integer  "stars",      null: false
-    t.integer  "pun_id",     null: false
+    t.integer  "stars",                  null: false
+    t.integer  "pun_id",                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id",    default: 1, null: false
   end
 
   create_table "requests", force: :cascade do |t|
-    t.text     "description", null: false
+    t.text     "description",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id",     default: 1, null: false
   end
 
   create_table "requests_puns", id: false, force: :cascade do |t|
@@ -70,9 +73,10 @@ ActiveRecord::Schema.define(version: 20150912155941) do
   add_index "requests_puns", ["request_id"], name: "index_requests_puns_on_request_id", using: :btree
 
   create_table "topics", force: :cascade do |t|
-    t.string   "title",      null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "title",                  null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "user_id",    default: 1, null: false
   end
 
   create_table "topics_puns", id: false, force: :cascade do |t|

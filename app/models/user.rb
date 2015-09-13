@@ -21,12 +21,17 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 
   has_many :likes
-  has_many :topics, through: :likes, source: :likeable, source_type: "Topic"
+  has_many :liked_topics, through: :likes, source: :likeable, source_type: "Topic"
+  has_many :puns
 
   def self.find_by_credentials(handle, password)
     user = User.find_by(handle: handle)
     return nil unless user && user.is_password?(password)
     user
+  end
+
+  def self.top_20
+    User.joins(:puns).group("users.id").order("COUNT(puns.id)").limit(20)
   end
 
   def reset_session_token!

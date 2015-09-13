@@ -8,10 +8,14 @@
 
 <label for="top-tags">Top Tags</label>
 <ul id="top-tags">
-
+  <% @top_tags.each do |topic| %>
+    <li><%= link_to topic.title, api_topic_url(topic) %></li>
+  <% end %>
 </ul>
 
 <label for="top-puns">Top Puns</label>
 <ul id="top-puns">
-
+  <% @top_puns.each do |pun| %>
+    <li><%= link_to pun.term, api_pun_url(pun) %></li>
+  <% end %>
 </ul>
