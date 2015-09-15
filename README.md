@@ -8,7 +8,7 @@
 
 ## Frameworks
 - Rails
-- Backbone
+- Angular
 
 ## Plugins/Other
 
