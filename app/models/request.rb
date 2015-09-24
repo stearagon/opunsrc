@@ -6,6 +6,7 @@
 #  description :text             not null
 #  created_at  :datetime
 #  updated_at  :datetime
+#  user_id     :integer          default(1), not null
 #
 
 class Request < ActiveRecord::Base

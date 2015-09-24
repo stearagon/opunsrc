@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   has_many :likes
   has_many :liked_topics, through: :likes, source: :likeable, source_type: "Topic"
   has_many :puns
+  has_many :ratings
 
   def self.find_by_credentials(handle, password)
     user = User.find_by(handle: handle)
