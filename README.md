@@ -1,5 +1,5 @@
 # opunsrc
-
+  A crowd sourced pun database
 ## Languages
 - Ruby
 - JavaScript

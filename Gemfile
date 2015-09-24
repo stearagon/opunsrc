@@ -35,6 +35,7 @@ gem 'bcrypt', '~> 3.1.7'
  gem 'rails_12factor'
  gem 'angularjs-rails'
  gem 'bower-rails'
+ gem 'angular-rails-templates'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

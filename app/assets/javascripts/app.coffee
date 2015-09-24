@@ -1,1 +1,0 @@
-opunsrc = angular.module('opunsrc', [])

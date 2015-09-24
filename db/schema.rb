@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 20150913145309) do
     t.integer  "user_id",    default: 1, null: false
   end
 
+  add_index "puns", ["term"], name: "index_puns_on_term", unique: true, using: :btree
+
   create_table "ratings", force: :cascade do |t|
     t.integer  "stars",                  null: false
     t.integer  "pun_id",                 null: false
@@ -76,8 +78,6 @@ ActiveRecord::Schema.define(version: 20150913145309) do
     t.datetime "updated_at",             null: false
     t.integer  "user_id",    default: 1, null: false
   end
-
-  add_index "topics", ["title"], name: "index_topics_on_title", unique: true, using: :btree
 
   create_table "topics_puns", id: false, force: :cascade do |t|
     t.integer  "topic_id",   null: false

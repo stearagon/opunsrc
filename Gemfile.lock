@@ -36,6 +36,10 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    angular-rails-templates (0.1.4)
+      railties (>= 3.1)
+      sprockets
+      tilt
     angularjs-rails (1.4.4)
     annotate (2.6.10)
       activerecord (>= 3.2, <= 4.3)
@@ -176,6 +180,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  angular-rails-templates
   angularjs-rails
   annotate
   bcrypt (~> 3.1.7)
