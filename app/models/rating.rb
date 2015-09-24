@@ -19,4 +19,10 @@ class Rating < ActiveRecord::Base
   belongs_to :pun
   belongs_to :user
 
+  def star_symbols
+    symbols = ""
+    self.stars.times { |num| symbols << "*"}
+    symbols
+  end
+
 end

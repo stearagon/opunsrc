@@ -50,6 +50,16 @@ class User < ActiveRecord::Base
     self.password_digest = BCrypt::Password.create(password)
   end
 
+  def average_pun_rating
+    rating = 0
+    count = 0
+    self.puns.each do |pun|
+      rating += pun.average_rating
+      count+=1
+    end
+    rating/count
+  end
+
   private
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64(16)

@@ -1,5 +1,6 @@
 <h1><%= @pun.term %></h1>
-
+<p>Avg. Rating: <%= @pun.average_rating %></p>
+<p>Your Rating: <%= current_user.ratings.find_by_pun_id(@pun).star_symbols %></p>
 <h1><%= @pun.pun %></h1>
 <h1><%= @pun.example %></h1>
 <h1>Tags</h1>

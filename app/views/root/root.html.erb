@@ -9,20 +9,20 @@
 <label for="top-tags">Top Tags</label>
 <ul id="top-tags">
   <% @top_tags.each do |topic| %>
-    <li><%= link_to topic.title, api_topic_url(topic) %></li>
+    <li><%= link_to topic.title, api_topic_url(topic) %> Likes: <%= topic.likes.count %> </li>
   <% end %>
 </ul>
 
 <label for="top-puns">Top Puns</label>
 <ul id="top-puns">
   <% @top_puns.each do |pun| %>
-    <li><%= link_to pun.term, api_pun_url(pun) %></li>
+    <li><%= link_to pun.term, api_pun_url(pun) %> Avg. Rating <%= pun.average_rating %></li>
   <% end %>
 </ul>
 
 <label for="top-users">Top Users</label>
 <ul id="top-users">
   <% @top_users.each do |user| %>
-    <li><%= link_to user.handle, user_url(user) %></li>
+    <li><%= link_to user.handle, user_url(user) %> Pun Avg. Rating: <%= user.average_pun_rating %></li>
   <% end %>
 </ul>
