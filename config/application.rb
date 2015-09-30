@@ -26,5 +26,22 @@ module Opunsrc
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    config.generators do |g|
+      g.test_framework :rspec,
+        :fixtures => true,
+        :view_specs => false,
+        :helper_specs => false,
+        :routing_specs => false,
+        :controller_specs => true,
+        :request_specs => true
+      g.fixture_replacement :factory_girl, :dir => "spec/factories"
+    end
+    if Rails.env.development?
+        # Don't log to STDOUT, by default rails s will handle it
+        config.logger = Logger.new('/dev/null')
+    else
+        # Don't log to file, sending everything to unicorn file.
+        config.logger = Logger.new(STDOUT)
+    end
   end
 end

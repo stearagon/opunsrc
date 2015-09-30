@@ -32,8 +32,11 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
- gem 'newrelic_rpm'
+group :production do
  gem 'rails_12factor'
+end
+
+ gem 'newrelic_rpm'
  gem 'angularjs-rails'
  gem 'bower-rails'
  gem 'angular-rails-templates'
@@ -54,4 +57,15 @@ group :development, :test do
   gem 'annotate'
 
   gem 'rspec-rails'
+
+  gem 'pry-rails'
+
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'faker'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'launchy'
 end

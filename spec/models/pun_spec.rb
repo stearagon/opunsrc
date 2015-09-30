@@ -1,11 +1,8 @@
+require 'rails_helper'
+
 describe Pun do
-  before(:each) do
-    pun = Pun.new()
+  let(:pun) do
+    Pun.new(term: "hello")
   end
-
-  describe '#term' do
-
-  end
-
 
 end

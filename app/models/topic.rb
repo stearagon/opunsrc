@@ -13,10 +13,13 @@ class Topic < ActiveRecord::Base
   include PgSearch
   multisearchable :against => [:title]
   validates :title, presence: true, uniqueness: true
+  validates_presence_of :user
+  validates :user_id, presence: true
 
   has_many :topics_puns
   has_many :puns, through: :topics_puns, source: :pun
   has_many :likes, as: :likeable, dependent: :destroy
+  belongs_to :user
 
   def self.top_20
     Topic

@@ -30,7 +30,7 @@ class Pun < ActiveRecord::Base
       .sort_by { |pun| pun.average_rating }[0..19]
   end
 
-  def update_tags(tags)
+  def update_tags(tags, current_user)
     tags = tags.split("#")[1..-1].map { |tag| tag.strip }
     self.topics.each_with_index do |topic, idx|
       if !tags.include?(topic.title)
@@ -41,7 +41,7 @@ class Pun < ActiveRecord::Base
     end
 
     tags.each do |tag|
-      new_tag = Topic.new(title: tag)
+      new_tag = Topic.new(title: tag, user_id: current_user.id)
 
       if new_tag.save
         self.topics << new_tag
