@@ -32,7 +32,9 @@ class User < ActiveRecord::Base
   end
 
   def self.top_20
-    User.joins(:puns).group("users.id").order("COUNT(puns.id)").limit(20)
+    User
+      .all
+      .sort_by { |user| user.average_pun_rating }[0..19]
   end
 
   def reset_session_token!
@@ -54,10 +56,12 @@ class User < ActiveRecord::Base
     rating = 0
     count = 0
     self.puns.each do |pun|
-      rating += pun.average_rating
-      count+=1
+      unless pun.average_rating == -1
+        rating += pun.average_rating
+        count+=1
+      end
     end
-    rating/count
+    count == 0 ? "n/a" : rating/count
   end
 
   private

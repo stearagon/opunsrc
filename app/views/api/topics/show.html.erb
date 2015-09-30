@@ -8,8 +8,8 @@
   <% @topic.puns.each do |pun| %>
     <li>
       <%= link_to pun.term, api_pun_url(pun)  %>
-      Avg. Rating: <%= pun.average_rating %>
-      Your Rating: <%= current_user.ratings.find_by_pun_id(pun).star_symbols %>
+      Avg. Rating: <%= pun.average_rating == -1 ? "n/a" : pun.average_rating %>
+      Your Rating: <%= current_user.ratings.find_by_pun_id(pun).nil? ? "n/a" : current_user.ratings.find_by_pun_id(pun).star_symbols %>
     </li>
   <% end %>
 </ul>

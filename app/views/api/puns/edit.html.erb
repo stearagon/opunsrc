@@ -10,8 +10,7 @@
   <input type="text" id="pun-pun" name="pun[pun]" value="<%= @pun.pun %>">
 
   <label for="pun-example">Example</label>
-  <textarea id="pun-example" name="pun[example]" rows="8" cols="40"> <%= @pun.example %>
-  </textarea>
+  <textarea id="pun-example" name="pun[example]" rows="8" cols="40"><%= @pun.example %></textarea>
 
   <label for="pun-tags">Tags</label>
   <textarea id="pun-tags" name="pun[tags]" rows="8" cols="40"><% @pun.topics.each do |topic| %><%= " #" + topic.title %><% end %></textarea>

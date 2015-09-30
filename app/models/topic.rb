@@ -16,13 +16,13 @@ class Topic < ActiveRecord::Base
 
   has_many :topics_puns
   has_many :puns, through: :topics_puns, source: :pun
-  has_many :likes, as: :likeable
+  has_many :likes, as: :likeable, dependent: :destroy
 
   def self.top_20
     Topic
-      .joins(:topics_puns, :puns)
+      .joins("LEFT OUTER JOIN likes ON likes.likeable_id = topics.id")
       .group("topics.id")
-      .order("COUNT(puns.id) DESC")
+      .order("COUNT(likes.id) DESC")
       .limit(20)
   end
 

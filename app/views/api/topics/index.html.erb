@@ -1,14 +1,11 @@
 <h1>Topics</h1>
 
-<%= link_to "Add New Topic", new_api_topic_url %>
 <%= link_to "Puns Index", api_puns_url %>
 
 <ul>
 <% @topics.each do |topic|  %>
   <li>
-    <a href="<%=api_topic_url(topic.id)%>">
-      <%= topic.title  %>
-    </a>
+    <a href="<%=api_topic_url(topic.id)%>"><%= topic.title  %></a>
     <br>
     <a>
       <%= " Puns: #{topic.puns.count}"%> <%= "Likes: #{topic.likes.count}"%>

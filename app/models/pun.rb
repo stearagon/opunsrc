@@ -22,20 +22,25 @@ class Pun < ActiveRecord::Base
   # has_many :likes, as: :likeable
   has_many :requests_puns
   has_many :requests, through: :requests_puns, source: :requests
-  has_many :ratings
+  has_many :ratings, dependent: :destroy
+
+  def self.top_20
+    Pun
+      .all
+      .sort_by { |pun| pun.average_rating }[0..19]
+  end
 
   def update_tags(tags)
-    tags = tags.split
+    tags = tags.split("#")[1..-1].map { |tag| tag.strip }
     self.topics.each_with_index do |topic, idx|
-      if !tags.include?("#" + topic.title)
+      if !tags.include?(topic.title)
         self.topics.delete(topic)
       else
-        tags.delete("#" + topic.title)
+        tags.delete(topic.title)
       end
     end
 
     tags.each do |tag|
-      tag.slice!(0)
       new_tag = Topic.new(title: tag)
 
       if new_tag.save
@@ -43,9 +48,7 @@ class Pun < ActiveRecord::Base
       else
         self.topics << Topic.find_by_title(tag)
       end
-
     end
-
   end
 
   def topics_titles
@@ -56,11 +59,8 @@ class Pun < ActiveRecord::Base
     return result
   end
 
-  def self.top_20
-    Pun.all
-  end
-
   def average_rating
+    return -1 if self.ratings.empty?
     total = 0
     count = 0
     self.ratings.each do |rating|

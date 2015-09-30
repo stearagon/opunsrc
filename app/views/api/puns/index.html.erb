@@ -2,11 +2,11 @@
 <%= link_to "Add New Pun", new_api_pun_url %>
 <%= link_to "Topics Index", api_topics_url %>
 <ul>
-<% @puns.each do |pun|  %>
+<% @puns.each do  |pun|  %>
   <li>
     <a href="<%=api_pun_url(pun.id)%>"><%= pun.term %></a>
-    <% @like = current_user.likes.find_by( likeable_id: pun.id, likeable_type: "Pun") %>
-    <%= @like ? like_delete(@like) : like_create(pun.id, "Pun")  %>
+    Avg. Rating: <%= pun.average_rating == -1 ? "n/a" : pun.average_rating %>
+    Your Rating: <%= current_user.ratings.find_by_pun_id(pun).nil? ? "n/a" : current_user.ratings.find_by_pun_id(pun).star_symbols %>
     <%= button_to "Delete Pun", api_pun_url(pun), method: :delete %>
   </li>
 <% end %>
