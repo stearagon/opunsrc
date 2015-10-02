@@ -48,6 +48,7 @@ class User < ActiveRecord::Base
   end
 
   def password=(password)
+    byebug
     @password = password
     self.password_digest = BCrypt::Password.create(password)
   end
