@@ -37,9 +37,6 @@ group :production do
 end
 
  gem 'newrelic_rpm'
- gem 'angularjs-rails'
- gem 'bower-rails'
- gem 'angular-rails-templates'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
